@@ -43,7 +43,37 @@ python ocr_test.py
 
 ## 🐳 Docker (optional)
 
+### Build the image
+
 ```
 docker build -t ocr-app .
-docker run --rm -v ${PWD}/images:/app/images ocr-app
 ```
+
+### Run the container (Windows - PowerShell)
+
+```
+docker run --rm `
+  -v ${PWD}\images:/app/images `
+  -v ${PWD}\plain_output:/app/plain_output `
+  -v ${PWD}\structured_output:/app/structured_output `
+  ocr-app
+```
+
+### Run the container (Linux / Mac)
+
+```
+docker run --rm \
+  -v $(pwd)/images:/app/images \
+  -v $(pwd)/plain_output:/app/plain_output \
+  -v $(pwd)/structured_output:/app/structured_output \
+  ocr-app
+```
+
+---
+
+## 📁 Output Folders
+
+* `plain_output/` → raw extracted text
+* `structured_output/` → structured OCR output (e.g., grouped levels)
+
+
